@@ -33,6 +33,23 @@ const userSchema = await mongoose.Schema(
         require: true,
       },
     ],
+    
+    working :[
+      {
+        type : String,
+        require : true
+      },
+    ],
+
+    current_working : {
+      type : String,
+      require : true
+    },
+
+     yearly_income : {
+      type : String,
+      require : true
+     },
 
     avatar: {
       type: String,
@@ -85,15 +102,27 @@ const userSchema = await mongoose.Schema(
       },
     ],
 
-    isMarried: {
-      type: Boolean,
-      required: true,
-    },
-
-    isDevorcedPerson: {
+    marital_status: {
       type: Boolean,
       require: true,
     },
+
+    diet : {
+      type : String,
+      require: true
+    },
+
+    sub_community : {
+      type : String,
+      require : true
+    },
+
+    isJoinedFamily : {
+      type : Boolean,
+      require : true
+    },
+
+
   },
 
   {
