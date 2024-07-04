@@ -39,9 +39,27 @@ const userSchema = await mongoose.Schema(
         type : String,
         require : true
       },
+      {
+        type : String,
+        require : true
+      },
+      {
+        type : String,
+        require : true
+      }
     ],
-
+    
+    current_working_type : {
+      type : String,
+      require : true
+    },
+    
     current_working : {
+      type : String,
+      require : true
+    },
+
+    current_working_company : {
       type : String,
       require : true
     },
@@ -121,7 +139,34 @@ const userSchema = await mongoose.Schema(
       type : Boolean,
       require : true
     },
-
+    
+     fun : [
+      {
+        type : String,
+        require : true
+      }
+     ],
+    
+     creative : [
+      {
+        type : String,
+        require : true
+      }
+     ],
+    
+     fitness : [
+      {
+        type : String,
+        require : true
+      }
+     ],
+    
+     other_interest : [
+      {
+        type : String,
+        require : true
+      }
+     ],
 
   },
 
