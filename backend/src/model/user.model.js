@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const userSchema = await mongoose.Schema(
   {
-    
+
     fullName: {
       type: String,
       require: true,
@@ -15,6 +15,11 @@ const userSchema = await mongoose.Schema(
     email: {
       type: String,
       require: true,
+    },
+
+    password : {
+     type : String,
+     require : true
     },
 
     phone_no: {
@@ -76,6 +81,7 @@ const userSchema = await mongoose.Schema(
         ref : "User"
       }
     ]
+
   },
   {
     timestamps: true,
