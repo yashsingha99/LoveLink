@@ -27,12 +27,13 @@ const userSchema = await mongoose.Schema(
     },
 
     qualification: [
-      // add more qualifications
+      // add more qualifications 
       {
         type: String,
         require: true,
       },
     ],
+    
     
     working :[
       {
@@ -69,10 +70,12 @@ const userSchema = await mongoose.Schema(
       require : true
      },
 
-    avatar: {
-      type: String,
-      default: "",
-    },
+    avatar: [
+      {
+        type: String,
+        default: "",
+      },
+    ],
 
     body: {
       // here you make a object for user body structure
@@ -167,8 +170,23 @@ const userSchema = await mongoose.Schema(
         require : true
       }
      ],
-
-  },
+     
+      family_details : {
+         mother : {
+           type : String,
+         },
+         father : {
+           type : String,
+         },
+         civlings : {
+           type : Object,
+         },
+         family_financial_status : {
+          type : String,
+          require : true
+         }
+      }
+  }, 
 
   {
     timestamps: true,
