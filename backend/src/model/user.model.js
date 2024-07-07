@@ -70,7 +70,7 @@ const userSchema = await mongoose.Schema(
       require : true
      },
 
-    avatar: [
+    avatars: [
       {
         type: String,
         default: "",
