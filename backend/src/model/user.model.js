@@ -1,6 +1,11 @@
 const mongoose = require("mongoose");
 const userSchema = await mongoose.Schema(
   {
+    isActive : {
+      type : Boolean,
+      default : true
+    },
+    
     fullName: {
       type: String,
       require: true,
@@ -27,13 +32,11 @@ const userSchema = await mongoose.Schema(
     },
 
     qualification: [
-      // add more qualifications 
       {
         type: String,
         require: true,
       },
     ],
-    
     
     working :[
       {
@@ -76,7 +79,7 @@ const userSchema = await mongoose.Schema(
         default: "",
       },
     ],
-
+ 
     body: {
       // here you make a object for user body structure
       type: Object, // like : skin color, any body demages,
@@ -108,20 +111,6 @@ const userSchema = await mongoose.Schema(
       type: String,
       require: true,
     },
-
-    followers: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: User,
-      },
-    ],
-
-    following: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: User,
-      },
-    ],
 
     marital_status: {
       type: Boolean,
@@ -185,7 +174,31 @@ const userSchema = await mongoose.Schema(
           type : String,
           require : true
          }
+      },
+
+//    *********relations***********
+            
+      
+    followers: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: User,
+      },
+    ],
+
+    following: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: User,
+      },
+    ],
+
+    bestMatches : [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: User,
       }
+    ]
   }, 
 
   {
