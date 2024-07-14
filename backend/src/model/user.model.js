@@ -5,7 +5,7 @@ const userSchema = await mongoose.Schema(
       type : Boolean,
       default : true
     },
-    
+
     fullName: {
       type: String,
       require: true,
@@ -178,7 +178,6 @@ const userSchema = await mongoose.Schema(
 
 //    *********relations***********
             
-      
     followers: [
       {
         type: mongoose.Schema.Types.ObjectId,
