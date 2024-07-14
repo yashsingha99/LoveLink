@@ -20,8 +20,12 @@ const addfollowing = async (req, res) => {
   
 }
 
+// best profiles are add according to theirs :- age, location, working domain, all about personl info, 
+// looking for :- (type of partner)
 const addBestMatches = async (req, res) => {
-    
+
 }
+
+
 
 
