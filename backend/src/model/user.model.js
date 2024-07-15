@@ -87,12 +87,10 @@ const userSchema = await mongoose.Schema(
 
     discription: {
       type: String,
-      require: true,
     },
 
     about: {
       type: String,
-      require: true,
     },
 
     DOB: {

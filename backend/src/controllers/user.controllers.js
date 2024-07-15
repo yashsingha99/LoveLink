@@ -1,5 +1,6 @@
 const register = async(req, res) => {
-     
+     const {data, fullName, username, email, password, phone_no, qualification, working, current_working_type, current_working, current_working_company, yearly_income, avatars, body, discription, } = req.body;
+
 }
 
 const login = async(req, res) => {
