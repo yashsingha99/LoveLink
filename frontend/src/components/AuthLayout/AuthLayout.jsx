@@ -6,7 +6,7 @@ export default function Protected({children, authentication = true}) {
 
     const navigate = useNavigate()
     const [loader, setLoader] = useState(true)
-    const authStatus = Cookies.getItem("BlogUserData") ? true : false
+    const authStatus = Cookies.getItem("userData") ? true : false
 
     useEffect(() => {
         if(authentication && authStatus !== authentication){

@@ -1,9 +1,9 @@
 import React from 'react'
-import Page from "./page"
-function signup() {
+import Page from "./Page"
+function Signup() {
   return (
     <Page />
   )
 }
 
-export default signup
+export default Signup

@@ -16,50 +16,20 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: (
-          <AuthLayout authentication={false}>
+          // <AuthLayout >
             <Login />
-          </AuthLayout>
+          // </AuthLayout>/
         ),
       },
       {
         path: "/signup",
         element: (
-          <AuthLayout authentication={false}>
+          // <AuthLayout >
             <Signup />
-          </AuthLayout>
+          // </AuthLayout>
         ),
       },
-      {
-        path: "/posts",
-        element: (
-          <AuthLayout authentication>
-            {" "}
-            <AllPosts />
-          </AuthLayout>
-        ),
-      },
-      {
-        path: "/add-post",
-        element: (
-          <AuthLayout authentication>
-            {" "}
-            <AddPost />
-          </AuthLayout>
-        ),
-      },
-      {
-        path: "/edit-post/:slug",
-        element: (
-          <AuthLayout authentication>
-            {" "}
-            <EditPost />
-          </AuthLayout>
-        ),
-      },
-      {
-        path: "/post/:slug",
-        element: <Post />,
-      },
+      
     ],
   },
 ]);
@@ -69,3 +39,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <RouterProvider router={router} />
   </React.StrictMode>
 );
+
+
+// 1)  Lazy Load
+// 2)  a: useMemo() ->  handle states using memoize some expensive and time consuming and constant at least two times
+//     b: useEffect() -> handle states to prevents unneccesary rerendering component or *eventes*
