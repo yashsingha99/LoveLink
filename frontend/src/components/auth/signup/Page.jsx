@@ -46,7 +46,9 @@ const Page = () => {
 
   const isLastStep = currentStep === steps.length - 1;
 
-  const handleNext = () => setCurrentStep(currentStep + 1);
+  const handleNext = () => {
+     setCurrentStep(currentStep + 1)
+  };
   const handleBack = () => setCurrentStep(currentStep - 1);
 
   return (
@@ -71,11 +73,11 @@ const Page = () => {
       {({ isSubmitting }) => (
         <Form>
           {steps[currentStep]}
-          <div>
-            {currentStep > 0 && <button type="button" onClick={handleBack}>Back</button>}
-            <button type="submit" disabled={isSubmitting}>
+          <div className='flex justify-between w-80'>
+            <button onClick={handleNext} type="submit" disabled={isSubmitting}>
               {isLastStep ? 'Submit' : 'Next'}
             </button>
+            {currentStep > 0 && <button type="button" onClick={handleBack}>Back</button>}
           </div>
         </Form>
       )}
