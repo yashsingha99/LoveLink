@@ -2,7 +2,10 @@ import React, { useState } from 'react';
 import { Formik, Form, Field } from 'formik';
 import { TextField } from '@material-ui/core';
 import * as Yup from 'yup';
-
+import image1 from "../../../images/image1.jpeg"
+import image2 from "../../../images/image2.jpeg"
+import Slider from './Slider';
+const images = [image1, image2]
 const Step1 = () => (
   <>
     <Field name="firstName" as={TextField} label="First Name" />
@@ -52,7 +55,9 @@ const Page = () => {
   const handleBack = () => setCurrentStep(currentStep - 1);
 
   return (
-    <Formik
+    <div className='flex justify-center items-center'>
+      {/* <Slider images = {images} /> */}
+       <Formik
       initialValues={{
         firstName: '',
         lastName: '',
@@ -81,7 +86,8 @@ const Page = () => {
           </div>
         </Form>
       )}
-    </Formik>
+       </Formik>
+    </div>
   );
 };
 

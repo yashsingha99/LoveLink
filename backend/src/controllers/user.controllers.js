@@ -29,4 +29,14 @@ const addBestMatches = async (req, res) => {
 
 
 
+module.exports = {
+     register,
+     login,
+     getProfile,
+     addFollowers,
+     addfollowing,
+     addBestMatches
+}
+
+
 
