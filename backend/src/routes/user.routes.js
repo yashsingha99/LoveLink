@@ -11,9 +11,9 @@ const {
 
 Router.post('/register', register)
 Router.post('/login', login)
-Router.post('/getProfile', getProfile)
-Router.post('/addFollowers', addFollowers)
-Router.post('/addfollowing', addfollowing)
-Router.post('/addBestMatches', addBestMatches)
+Router.get('/getProfile', getProfile)
+Router.patch('/addFollowers', addFollowers)
+Router.patch('/addfollowing', addfollowing)
+Router.patch('/addBestMatches', addBestMatches)
 
 module.exports = { Router }
