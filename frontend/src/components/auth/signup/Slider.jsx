@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import './ImageSlider.css'; // Import your custom CSS file for animations
+import './ImageSlider.css';
 
 const Slider = ({ images, interval = 3000 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);

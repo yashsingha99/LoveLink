@@ -1,17 +1,47 @@
-import React, { useState } from 'react';
-import { Formik, Form, Field } from 'formik';
-import { TextField } from '@material-ui/core';
-import * as Yup from 'yup';
-import image1 from "../../../images/image1.jpeg"
-import image2 from "../../../images/image2.jpeg"
-import Slider from './Slider';
-const images = [image1, image2]
-const Step1 = () => (
-  <>
-    <Field name="firstName" as={TextField} label="First Name" />
-    <Field name="lastName" as={TextField} label="Last Name" />
-  </>
+import React, { useState } from "react";
+import { Formik, Form, Field } from "formik";
+import { TextField } from "@material-ui/core";
+import * as Yup from "yup";
+import image1 from "../../../images/image1.jpeg";
+import image2 from "../../../images/image2.jpeg";
+import Slider from "./Slider";
+const images = [image1, image2];
+
+const Realoder = () => (
+  <>Let's add your details while we find best Matches for you</>
 );
+const Step1 = () => {
+  const relation = [
+    "Myself",
+    "My Son",
+    "My Daughter",
+    "My Brother",
+    "My Sister",
+    "My Friend",
+    "My Relative",
+  ];
+  return (
+    <>
+      <div className="text-2xl">This Profile is for</div>
+      <div className="flex gap-8 flex-wrap">
+        {relation.map((rel) => (
+          <>
+            <button className="px-4 py-2 border-4 rounded-full flex">
+              <div className="h-8 w-8 rounded-full bg-gray-200"></div>
+              {rel}
+            </button>
+          </>
+        ))}
+      </div>
+    </>
+  );
+};
+// const Step1 = () => (
+//   <>
+//     <Field name="firstName" as={TextField} label="First Name" />
+//     <Field name="lastName" as={TextField} label="Last Name" />
+//   </>
+// );
 
 const Step2 = () => (
   <>
@@ -31,16 +61,16 @@ const steps = [<Step1 />, <Step2 />, <Step3 />];
 
 const validationSchemas = [
   Yup.object({
-    firstName: Yup.string().required('Required'),
-    lastName: Yup.string().required('Required'),
+    firstName: Yup.string().required("Required"),
+    lastName: Yup.string().required("Required"),
   }),
   Yup.object({
-    email: Yup.string().email('Invalid email').required('Required'),
-    phone: Yup.string().required('Required'),
+    email: Yup.string().email("Invalid email").required("Required"),
+    phone: Yup.string().required("Required"),
   }),
   Yup.object({
-    address: Yup.string().required('Required'),
-    city: Yup.string().required('Required'),
+    address: Yup.string().required("Required"),
+    city: Yup.string().required("Required"),
   }),
 ];
 
@@ -50,43 +80,51 @@ const Page = () => {
   const isLastStep = currentStep === steps.length - 1;
 
   const handleNext = () => {
-     setCurrentStep(currentStep + 1)
+    setCurrentStep(currentStep + 1);
   };
   const handleBack = () => setCurrentStep(currentStep - 1);
 
   return (
-    <div className='flex justify-center items-center'>
+    <div className="flex justify-center items-center">
       {/* <Slider images = {images} /> */}
-       <Formik
-      initialValues={{
-        firstName: '',
-        lastName: '',
-        email: '',
-        phone: '',
-        address: '',
-        city: '',
-      }}
-      validationSchema={validationSchemas[currentStep]}
-      onSubmit={(values) => {
-        if (isLastStep) {
-          console.log('Form Submitted', values);
-        } else {
-          handleNext();
-        }
-      }}
-    >
-      {({ isSubmitting }) => (
-        <Form>
-          {steps[currentStep]}
-          <div className='flex justify-between w-80'>
-            <button onClick={handleNext} type="submit" disabled={isSubmitting}>
-              {isLastStep ? 'Submit' : 'Next'}
-            </button>
-            {currentStep > 0 && <button type="button" onClick={handleBack}>Back</button>}
-          </div>
-        </Form>
-      )}
-       </Formik>
+      <Formik
+        initialValues={{
+          firstName: "",
+          lastName: "",
+          email: "",
+          phone: "",
+          address: "",
+          city: "",
+        }}
+        validationSchema={validationSchemas[currentStep]}
+        onSubmit={(values) => {
+          if (isLastStep) {
+            console.log("Form Submitted", values);
+          } else {
+            handleNext();
+          }
+        }}
+      >
+        {({ isSubmitting }) => (
+          <Form>
+            {steps[currentStep]}
+            <div className="flex justify-between w-80">
+              <button
+                onClick={handleNext}
+                type="submit"
+                disabled={isSubmitting}
+              >
+                {isLastStep ? "Submit" : "Next"}
+              </button>
+              {currentStep > 0 && (
+                <button type="button" onClick={handleBack}>
+                  Back
+                </button>
+              )}
+            </div>
+          </Form>
+        )}
+      </Formik>
     </div>
   );
 };
