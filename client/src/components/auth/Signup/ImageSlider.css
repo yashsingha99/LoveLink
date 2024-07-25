@@ -12,3 +12,7 @@
     opacity: 0;
     transition: opacity 1000ms;
   }
+  
+  .imageChanger{
+    transition-duration:1000ms;
+  }

@@ -2,12 +2,9 @@ import React, { useState } from "react";
 import { Formik, Form, Field } from "formik";
 import { TextField } from "@material-ui/core";
 import * as Yup from "yup";
-import image1 from "../../../images/image1.jpeg";
-import image2 from "../../../images/image2.jpeg";
-import Slider from "./Slider";
-const images = [image1, image2];
 
-const Realoder = () => (
+
+const Reloder = () => (
   <>Let's add your details while we find best Matches for you</>
 );
 const Step1 = () => {
@@ -20,19 +17,33 @@ const Step1 = () => {
     "My Friend",
     "My Relative",
   ];
+  const [click, setClick] = useState(-1);
+  const handleClick = (i) => {
+     setClick(i)
+  }
   return (
     <>
       <div className="text-2xl">This Profile is for</div>
       <div className="flex gap-8 flex-wrap">
-        {relation.map((rel) => (
-          <>
-            <button className="px-4 py-2 border-4 rounded-full flex">
-              <div className="h-8 w-8 rounded-full bg-gray-200"></div>
+        {relation.map((rel, i) => (
+          <div className="" key={i}>
+            <button onClick={ () => handleClick(i)}
+             className="px-4 py-2 border-4 rounded-full  flex justify-center items-center"> 
+              <div className={`h-8 w-8 rounded-full mr-1 ${click == i ? "bg-green-400" : "bg-gray-200" } `}></div>
               {rel}
             </button>
-          </>
+          </div>
         ))}
       </div>
+      { click != -1 && (
+            <>
+              {click == 0 && (
+                <div>
+                  
+                </div>
+              )}
+            </>
+      )}
     </>
   );
 };

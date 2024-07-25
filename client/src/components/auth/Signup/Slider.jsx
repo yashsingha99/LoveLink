@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import './ImageSlider.css';
 
 const Slider = ({ images, interval = 3000 }) => {
@@ -14,7 +13,7 @@ const Slider = ({ images, interval = 3000 }) => {
   }, [images.length, interval]);
 
   return (
-    <div className="relative w-full h-full">
+    <div className="relative w-full flex h-full">
       <TransitionGroup>
         {/* {images.map((image, index) => ( */}
           <CSSTransition
@@ -27,7 +26,7 @@ const Slider = ({ images, interval = 3000 }) => {
               <img
                 src={images[currentIndex]}
                 alt={`Slide ${currentIndex}`}
-                className="absolute inset-0 w-full h-full object-cover "
+                className="inset-0 w-full h-full object-cover "
               />
             {/* )} */}
           </CSSTransition>
