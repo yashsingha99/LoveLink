@@ -2,6 +2,11 @@ import React, { useState } from "react";
 import { Formik, Form, Field } from "formik";
 import { TextField } from "@material-ui/core";
 import * as Yup from "yup";
+import { Avatar, Chip } from "@mui/material";
+import CircleIcon from "@mui/icons-material/Circle";
+import CheckCircleRoundedIcon from "@mui/icons-material/CheckCircleRounded";
+import { blue, green } from "@material-ui/core/colors";
+
 
 
 const Reloder = () => (
@@ -17,33 +22,62 @@ const Step1 = () => {
     "My Friend",
     "My Relative",
   ];
+
+  const gender = [
+    "Male", 
+    "Female"
+  ]
   const [click, setClick] = useState(-1);
-  const handleClick = (i) => {
-     setClick(i)
+  const [types, setTypes] = useState(-1);
+  const handleTypeClick= (i) => {
+        
   }
   return (
     <>
-      <div className="text-2xl">This Profile is for</div>
-      <div className="flex gap-8 flex-wrap">
+      <div className="text-3xl text-gray">This Profile is for</div>
+      <div className="flex gap-4 flex-wrap">
         {relation.map((rel, i) => (
           <div className="" key={i}>
-            <button onClick={ () => handleClick(i)}
-             className="px-4 py-2 border-4 rounded-full  flex justify-center items-center"> 
-              <div className={`h-8 w-8 rounded-full mr-1 ${click == i ? "bg-green-400" : "bg-gray-200" } `}></div>
-              {rel}
-            </button>
+            <Chip
+              icon={
+                click != i ? (
+                  <CircleIcon />
+                ) : (
+                  <CheckCircleRoundedIcon />
+                )
+              }
+              label={rel}
+              color="default"
+              variant="outlined"
+              onClick={() => setClick(i)}
+            ></Chip>
           </div>
         ))}
       </div>
-      { click != -1 && (
-            <>
-              {click == 0 && (
-                <div>
-                  
-                </div>
-              )}
-            </>
-      )}
+
+      <div className="text-3xl text-gray">Gender</div>
+      
+       {click == 0 && (
+        <div className="flex flex-wrap">
+       {gender.map((gen, i) => (
+        <div className="" key={i}>
+          <Chip
+            icon={
+              types != i ? (
+                <CircleIcon />
+              ) : (
+                <CheckCircleRoundedIcon />
+              )
+            }
+            label={gen}
+            color="default"
+            variant="outlined"
+            onClick={() => handleTypeClick(i)}
+          ></Chip>
+        </div>
+      ))}
+      </div>)
+    }
     </>
   );
 };
@@ -86,18 +120,14 @@ const validationSchemas = [
 ];
 
 const Page = () => {
-  const [currentStep, setCurrentStep] = useState(0);
 
   const isLastStep = currentStep === steps.length - 1;
 
-  const handleNext = () => {
-    setCurrentStep(currentStep + 1);
-  };
+  const handleNext = () => setCurrentStep(currentStep + 1);
   const handleBack = () => setCurrentStep(currentStep - 1);
 
   return (
-    <div className="flex justify-center items-center">
-      {/* <Slider images = {images} /> */}
+    <div className="flex justify-center items-center"> 
       <Formik
         initialValues={{
           firstName: "",
